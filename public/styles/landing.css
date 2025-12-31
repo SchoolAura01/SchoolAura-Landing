@@ -7,19 +7,6 @@ button{
   cursor: pointer;
 }
 
-/* .hero-gradient-band{
-background: linear-gradient(180deg, rgba(164, 233, 249, 0.4) 10.1%, rgba(88, 66, 255, 0.4) 100%);
-filter: blur(150px);
-  transform: rotate(-8deg);
-} */
-
-.hero-bg{
-  /* overflow-x: hidden; */
-   /* background-image: url("/images/hero-background.png");
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center; */
-}
 .hero-content::before {
   content: "";
   position: absolute;
@@ -63,30 +50,26 @@ width: clamp(260px,35vw,500px);
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .feature-image{
-   width: 800px;
-   height: 800px;
+   width: 600px;
+   height: 600px;
 }
- /* w-[55vw] h-[55vw]          
-    sm:w-[400px] sm:h-[400px]
-    md:w-[600px] md:h-[600px] */
 
 .feature-1{
-top:2rem;
-  right:16%;
+top:20px;
+  right:150px;
   transform: translateY(-50%);
 }
-.feature-2{
-  top:25%;
-  right: 10%;
+.feature-2,.feature-4{
+  top:150px;
+  right:80px;
   transform: translateY(50%);
 }
 .feature-3{
-  bottom: 20%;
-  left: 20%;
+  bottom:100px;
+  left:200px;
 }
 .feature-4{
-  top: 25%;
-  left:10%;
+  left:75px;
   transform: translateY(50%);
 }
 .software-card-1 .img{
@@ -108,4 +91,16 @@ height: 380px;
 .testimonial-pill{
   color:var(--blue-color);
   border: 1px solid  var(--blue-color);
+}
+.map{
+  width:100%;
+  height: 400px;
+  transform: scale(1);
+}
+.downloadApp {
+  height: 320px;
+}
+.downloadApp .img{
+  width: 220px;
+  height:420px;
 }

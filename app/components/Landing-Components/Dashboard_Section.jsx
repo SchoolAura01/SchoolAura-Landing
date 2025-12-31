@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 const Dashboard_Section = () => {
   return (
-    <section  className="container mx-auto mb-20 py-10 w-[90%] lg:w-[80%]">
+    <section  className="container mx-auto mt-10 w-[90%] lg:w-[80%]">
       <div className=" dashboard mx-auto bg-[#02004C] text-white rounded-xl flex flex-col md:flex-row md:justify-between">
         <div className="left p-4 md:p-5 lg:p-10 xl:p-15 2xl:p-20 w-full md:w-180 order-2 md:order-1 flex flex-col justify-center">
           <h3 className="text-[clamp(2rem,3vw,2.8rem)] font-semibold leading-10 md:leading-10 lg:leading-13">

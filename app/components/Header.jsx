@@ -83,7 +83,7 @@ const navLinks=["Hero", "About Us", "Testimonials", "Services", "FAQs", "Contact
               )
             )}
           </ul>
-         <GetStart className="md:hidden mt-2 ml-4"/>
+         <GetStart className="md:hidden my-4 ml-4"/>
         </div>
       )}
      

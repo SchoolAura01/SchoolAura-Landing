@@ -24,29 +24,29 @@ const Testimonial = () => {const testimonials = [
 
 
   return (
-       <section className="w-full bg-white pt-15">
-      <div className="container mx-auto py-6">
-        <div className="grid z-9 grid-cols-1 lg:grid-cols-2 gap-12 items-center flex items-start">
+       <section className="w-full bg-white lg:pt-15">
+      <div className=" mx-auto lg:py-6 overflow-hidden">
+        <div className="relative testimonial grid z-9 grid-cols-1 lg:grid-cols-2 lg:gap-8 xl:gap-12 items-center flex items-start">
 
           {/* Left: World Map Background */}
-          <div className="relative w-full h-[300px] lg:h-[400px]">
+          <div className="relative w-full map">
             <Image
-              src="/images/map.svg"
+              src="/images/map.png"
               alt="World Map"
               fill
-              className="absolute inset-0 w-full h-full object-contain opacity-60"
+              className=" object-contain "
             />
           </div>
 
           {/* Right: Content */}
-          <div className="max-w-xl ">
+          <div className="absolute lg:static top-40  sm:top-1/2 lg:top-auto rightSection lg:max-w-140  px-5 sm:px-10">
             {/* Badge */}
-            <span className="inline-block mb-4 px-4 py-1 text-xl font-normal testimonial-pill rounded-full">
+            <span className="inline-block mb-4 px-4 py-1 text-sm sm:text-xl font-normal testimonial-pill rounded-full">
               Testimonials
             </span>
 
             {/* Heading */}
-            <h2 className="text-3xl lg:text-4xl font-normal text-gray-800 leading-tight">
+            <h2 className="text-3xl sm:text-3xl lg:text-3xl xl:text-4xl font-normal text-gray-800 leading-tight">
               Trust Voices From Parents <br />
               and Students Who Stay <br />
               Connected With SchoolAura
@@ -54,25 +54,26 @@ const Testimonial = () => {const testimonials = [
             </h2>
 
             {/* Description */}
-            <p className="mt-4 text-gray-800 text-lg leading-relaxed">
+            <p className="mt-2 lg:mt-4 text-gray-800 md:text-2xl lg:text-xl leading-5 sm:leading-5 md:leading-7">
               Discover how SchoolAura has simplified school life for thousands of parents and students. From instant updates to seamless communication hear how families stay informed, engaged, and connected every day.
             </p>
+         
           </div>
 
         </div>
-         <div className="-translate-y-10 z-10 mx-auto px-5">
+         <div className="testimonial-slider z-10 mx-auto pl-5 -mt-20 sm:mt-6 md:-mt-5 lg:-mt-10">
         <Swiper
           spaceBetween={24}
           slidesPerView={1.1}
           breakpoints={{
-            640: { slidesPerView: 1.5 },
+            640: { slidesPerView: 1.7 },
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 2.5 },
           }}
         >
           {testimonials.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-[#E7EAF1]  rounded-2xl p-10 h-full flex gap-4 items-center">
+              <div className="bg-[#E7EAF1]  rounded-2xl p-4 md:p-5 lg:p-7 xl:p-10 h-full flex gap-3 sm:gap-4 items-center">
                 
                 {/* Top */}
                
@@ -88,7 +89,7 @@ const Testimonial = () => {const testimonials = [
                     {item.name}
                   </h4>
                   {/* Text */}
-                <p className="text-gray-900 text-lg leading-relaxed mb-0">
+                <p className="text-gray-900  lg:text-lg leading-6 lg:leading-relaxed mb-0">
                   {item.text}
                 </p>
                    </div>

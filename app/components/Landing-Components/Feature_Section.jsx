@@ -8,8 +8,8 @@ const Feature_Section = () => {
     ]
   return (
     <section className=" ">
-      <div className="FeatureSection container w-[80%] relative mx-auto mt-10 min-h-fit">
-         <div className="relative mt-20 mx-auto feature-image">
+      <div className="FeatureSection container w-[80%] relative mx-auto sm:mt-10 min-h-fit">
+         <div className="relative mt-10 sm:mt-20 mx-auto feature-image">
             <Image
               src="/images/mobile2.png"
               alt="SchoolAura"
@@ -19,24 +19,22 @@ const Feature_Section = () => {
             />
           </div>
           {/* Top */}
-          <div className="feature-1 absolute">
-            < Feature_Card feature={features[0]}/>
-          </div>
+          
+            < Feature_Card feature={features[0]} featureCount="feature-1"/>
 
           {/* Right */}
-          <div className="feature-2 absolute ">
-            <Feature_Card feature={features[1]} />
-          </div>
+         
+            <Feature_Card feature={features[1]} featureCount="feature-2" />
 
           {/* Bottom */}
-          <div className="feature-3 absolute ">
-            <Feature_Card feature={features[2]} />
-          </div>
+         
+            <Feature_Card feature={features[2]} featureCount="feature-3"/>
+        
 
           {/* Left */}
-          <div className="feature-4  absolute ">
-            <Feature_Card feature={features[3]}/>
-          </div>
+         
+            <Feature_Card feature={features[3]} featureCount="feature-4"/>
+         
       </div>
     </section>
   )
