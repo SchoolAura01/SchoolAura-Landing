@@ -1,43 +1,136 @@
-import React from 'react'
-import Feature_Card from './sub_Components/Feature_Card'
-import Image from 'next/image'
-
+"use client";
+import React, { useEffect, useRef } from "react";
+import Feature_Card from "./sub_Components/Feature_Card";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const Feature_Section = () => {
-    const features=[{"title":"End-to-End Encryption","desc":"Your conversations stay private and secure — only between you and your school community."},{"title":"Group Chat","desc":"Collaborate easily with class groups, parent groups, and staff communities — all in one place."},{"title":"Fast & User Friendly","desc":"Intuitive design and smooth performance for effortless messaging anytime, anywhere."},{"title":"Students, Parents, Teacher","desc":"A unified space for real-time updates, discussions, and learning communication."}
-        
-    ]
-  return (
-    <section className=" ">
-      <div className="FeatureSection container w-[80%] relative mx-auto sm:mt-10 min-h-fit">
-         <div className="relative mt-10 sm:mt-20 mx-auto feature-image">
-            <Image
-              src="/images/mobile2.png"
-              alt="SchoolAura"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-          {/* Top */}
+  const sectionRef = useRef(null);
+  const imageRef = useRef(null);
+  const cardsRef = useRef([]);
+  const features = [
+    {
+      title: "End-to-End Encryption",
+      desc: "Your conversations stay private and secure — only between you and your school community.",
+    },
+    {
+      title: "Group Chat",
+      desc: "Collaborate easily with class groups, parent groups, and staff communities — all in one place.",
+    },
+    {
+      title: "Fast & User Friendly",
+      desc: "Intuitive design and smooth performance for effortless messaging anytime, anywhere.",
+    },
+    {
+      title: "Students, Parents, Teacher",
+      desc: "A unified space for real-time updates, discussions, and learning communication.",
+    },
+  ];
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center 100%",
+          toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
+          // markers: true,
+        },
+      });
+
+      tl.fromTo(
+        imageRef.current,
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
           
-            < Feature_Card feature={features[0]} featureCount="feature-1"/>
+         
+        }
+      );
 
-          {/* Right */}
-         
-            <Feature_Card feature={features[1]} featureCount="feature-2" />
+      const directions = [
+        { y: -40 }, // top
+        { x: 40 }, // right
+        { y: 40 }, // bottom
+        { x: -40 }, // left
+      ];
 
-          {/* Bottom */}
-         
-            <Feature_Card feature={features[2]} featureCount="feature-3"/>
-        
+      cardsRef.current.forEach((card, i) => {
+        tl.fromTo(
+          card,
+          { ...directions[i], opacity: 0 },
+          {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            
+          },
+          "-=0.4"
+        );
+      });
+    }, sectionRef);
 
-          {/* Left */}
-         
-            <Feature_Card feature={features[3]} featureCount="feature-4"/>
-         
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className=" ">
+      <div className="FeatureSection container w-[80%] relative mx-auto sm:mt-10 min-h-fit">
+        <div
+          ref={imageRef}
+          className="relative mt-10 sm:mt-20 mx-auto feature-image"
+        >
+          <Image
+            src="/images/mobile2.png"
+            alt="SchoolAura"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        {/* Top */}
+
+        <Feature_Card
+          ref={(el) => (cardsRef.current[0] = el)}
+          feature={features[0]}
+          featureCount="feature-1"
+        />
+
+        {/* Right */}
+
+        <Feature_Card
+          ref={(el) => (cardsRef.current[1] = el)}
+          feature={features[1]}
+          featureCount="feature-2"
+        />
+
+        {/* Bottom */}
+
+        <Feature_Card
+          ref={(el) => (cardsRef.current[2] = el)}
+          feature={features[2]}
+          featureCount="feature-3"
+        />
+
+        {/* Left */}
+
+        <Feature_Card
+          ref={(el) => (cardsRef.current[3] = el)}
+          feature={features[3]}
+          featureCount="feature-4"
+        />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Feature_Section
+export default Feature_Section;

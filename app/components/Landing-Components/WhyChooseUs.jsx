@@ -1,10 +1,10 @@
 "use client";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
-
+import { useState,useRef, useEffect } from "react";
+import gsap from "gsap";
 const WhyChooseUs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+const contentRefs = useRef([]);
   const items = [
     {
       title: "Smart Communication",
@@ -27,9 +27,30 @@ const WhyChooseUs = () => {
         "Trusted by schools across regions, enabling seamless communication worldwide.",
     },
   ];
+useEffect(() => {
+  contentRefs.current.forEach((el, i) => {
+    if (!el) return;
+
+    if (i === activeIndex) {
+      gsap.to(el, {
+        height: "auto",
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    } else {
+      gsap.to(el, {
+        height: 0,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
+    }
+  });
+}, [activeIndex]);
 
   return (
-    <section className="w-full bg-white">
+    <section data-scroll-section className="w-full bg-white">
       <div className="whyChooseUs mt-10 container mx-auto px-5 sm:px-2 md:px-0  md:w-[80%]">
         {/* first  */}
         <div className="mb-6 sm:mb-10">
@@ -51,7 +72,7 @@ const WhyChooseUs = () => {
         <div className="rounded-[15px] md:rounded-[20px] border z-10 bg-white border-gray-900 overflow-hidden shadow-sm ">
 
           {items.map((item, index) => (
-            <div key={index} className="border-b last:border-b-0 transition-colors duration-300 ease-in-out hover:bg-gray-50">
+            <div key={index} className="border-b last:border-b-0 transition-colors duration-300 ease-in-out bg-white hover:bg-gray-50">
 
               
               <button
@@ -76,12 +97,9 @@ const WhyChooseUs = () => {
               </button>
 
               {/* Accordion Content */}
-             <div 
-  className={`overflow-hidden transition-[max-height] duration-300 ease-in-out  ${
-    activeIndex === index
-      ? "max-h-[500px] "
-      : "max-h-0"
-  }`}
+             <div
+  ref={(el) => (contentRefs.current[index] = el)}
+  className="overflow-hidden h-0 opacity-0"
 >
   <div className="px-6 pb-6 pl-[3.5rem] text-gray-800  text-sm md:text-xl leading-5 md:leading-relaxed">
     {item.content}

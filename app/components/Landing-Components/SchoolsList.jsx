@@ -50,7 +50,7 @@ const SchoolsList = () => {
     ],
   };
   return (
-    <section>
+    <section data-scroll-section>
       <div className=" mx-auto px-6 mt-10 md:mt-20 text-center">
 
         {/* Heading */}

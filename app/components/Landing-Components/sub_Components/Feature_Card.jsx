@@ -1,7 +1,8 @@
-
-const Feature_Card = ({feature,featureCount}) => {
+"use client";
+import React, { forwardRef } from "react";
+const Feature_Card = forwardRef(({ feature, featureCount }, ref) =>  {
   return (
-    <div className={`${featureCount} absolute feature-card w-47 md:w-60 lg:w-75 rounded-xl sm:rounded-2xl bg-white p-2 md:p-3 lg:p-4 xl:p-5`}>
+    <div ref={ref} className={`${featureCount} absolute feature-card w-47 md:w-60 lg:w-75 rounded-xl sm:rounded-2xl bg-white p-2 md:p-3 lg:p-4 xl:p-5`}>
       <div className="flex items-center gap-3 lg:gap-4">
        
         <div>
@@ -17,6 +18,6 @@ const Feature_Card = ({feature,featureCount}) => {
       </div>
     </div>
   );
-};
+});
 
 export default Feature_Card;

@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 const Get_In_Touch = () => {
   return (
-    <section className="md:py-5 xl:py-10">
+    <section  data-scroll-section className="md:py-5 xl:py-10">
       <div className="container px-4 sm:px-2 md:px-0  md:w-[80%] mx-auto flex justify-center mb-10">
         <div className="w-full rounded-3xl bg-linear-to-b from-neutral-200 via-white to-white px-5 py-1 sm:px-10 sm:py-6 shadow-sm">
           {/* Heading */}

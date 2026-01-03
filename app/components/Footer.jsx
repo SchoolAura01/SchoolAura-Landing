@@ -4,7 +4,7 @@ import Image from "next/image";
 const Footer = () => {
   const icons=["ic:baseline-facebook","bxl:instagram-alt","mdi:youtube","mdi:twitter"];
   return (
-    <footer className=''>
+    <footer data-scroll-section className=''>
          <div className="mx-auto sm:mt-40">
 
         {/* Outer Card */}
