@@ -6,7 +6,10 @@
 button{
   cursor: pointer;
 }
-
+.hero-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 .hero-content::before {
   content: "";
   position: absolute;

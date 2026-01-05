@@ -59,14 +59,15 @@ useEffect(() => {
         image,
         {
           opacity: 0,
-          y: isBlurOnly ? 0 : fromBottom ? 60 : 0,
+          yPercent: isBlurOnly ? 0 : fromBottom ? 20 : 0,
           scale: isBlurOnly ? 1 : 0.96,
         },
         {
           opacity: 1,
-          y: 0,
+          yPercent: 0,
           scale: 1,
-          ease: "none",
+           duration: 1.6,
+          ease: "power2.out",
         }
       );
     }

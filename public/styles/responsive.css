@@ -119,9 +119,9 @@ height: 380px;
    height: 400px;
 }
 .feature-2,.feature-4{
-  top:100px;
+  top:145px;
 }
-  /* .feature-1{
+  .feature-1{
   right:50px;
 }
 .feature-2{
@@ -134,7 +134,7 @@ height: 380px;
 }
 .feature-4{
   left:-30px;
-} */
+}
 }
 @media (max-width:800px){
    .testimonial-slider{
@@ -187,14 +187,7 @@ height: 400px;
 width:400px;
     height:400px;
  }
- /* .hero-image{
-  width: 500px;
-  height:600px;
-}
-.rating {
-  top:75px;
-  right:-10%;
-} */
+
 .hero-image{
   width: 400px;
   height:450px;
@@ -228,7 +221,7 @@ height: 450px;
    height: 300px;
 }
 .feature-2,.feature-4{
-  top:70px;
+  top:90px;
 }
    .feature-1{
   right:-20px;
@@ -297,7 +290,7 @@ width:300px;
   height: 1.5rem;
 }
 .feature-2,.feature-4{
-  top:50px;
+  top:80px;
 }
    .feature-1{
   right:20px;
@@ -450,7 +443,7 @@ font-size: 0.7rem !important;
   transform: translateY(10rem) !important;
 }
   .downloadApp .img{
-  width: 170px;
+  width: 180px;
   height:250px;
 }
 .software-card-3 .img {
@@ -458,10 +451,10 @@ font-size: 0.7rem !important;
 height: 400px;
 }
 .feature-2{
-  top:90px;
+  top:120px;
 }
 .feature-4{
-  top:30px;
+  top:60px;
 }
    .feature-1{
   right:20px;
@@ -476,6 +469,10 @@ height: 400px;
 }
 .feature-4{
   left:0px;
+}
+.downloadApp .secondPhone{
+  margin-left: -90px;
+  transform: translateY(-10px);
 }
 }
 @media (max-width: 340px) {

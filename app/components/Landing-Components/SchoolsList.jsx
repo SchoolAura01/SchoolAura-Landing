@@ -55,7 +55,7 @@ const SchoolsList = () => {
 
         {/* Heading */}
         <p className="text-md font-medium text-black mb-6">
-          Trusted by thousands from schools
+          Trusted by thousands of schools
         </p>
 
         {/* Logos */}

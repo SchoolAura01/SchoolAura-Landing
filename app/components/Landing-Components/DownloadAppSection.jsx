@@ -11,68 +11,81 @@ const DownloadAppSection = () => {
   const sectionRef = useRef(null);
 const phonesRef = useRef(null);
 const textRef = useRef(null);
+
 useEffect(() => {
+  if (!sectionRef.current || !phonesRef.current || !textRef.current) return;
+
   const phones = phonesRef.current;
   const text = textRef.current;
+const mm = gsap.matchMedia();
+  const ctx = gsap.context(() => {
+   
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: sectionRef.current,
-      start: "top 80%",
-      end: "top 30%",
-      scrub: 2.5,
-      invalidateOnRefresh: true,
-    },
-  });
+    // 🔹 Desktop
+    mm.add("(min-width: 434px)", () => {
+      gsap.set(phones, { yPercent: 30 });
+    });
+   
 
-  tl.fromTo(
-    phones,
-    {
-      opacity: 0,
-      y: 120,
-      filter: "blur(10px)",
-    },
-    {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      ease: "none",
-    }
-  );
-
-  tl.fromTo(
-    phones.querySelectorAll(".img"),
-    {
-      opacity: 0,
+    gsap.set(phones.querySelectorAll(".img"), {
+      autoAlpha: 0,
       scale: 0.96,
-    },
-    {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.15,
-      ease: "none",
-    },
-    0
-  );
+    });
 
-  tl.fromTo(
-    text.children,
-    { opacity: 0 },
-    {
-      opacity: 1,
-      stagger: 0.15,
+    gsap.set(text.children, {
+      autoAlpha: 0,
+    });
+const isDesktop = window.matchMedia("(min-width: 434px)").matches;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 90%",
+        end: "top 40%",
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+        // markers: true,
+      },
+    });
+if (isDesktop) {
+    tl.to(phones, {
+      yPercent: 0,
       ease: "none",
-    },
-    0.2
-  );
-  // gsap.to(".DownloadAppSection .img", {
-  //    y: "+=12",
-  //     duration: 2.5,
-  //      repeat: -1,
-  //       yoyo: true,
-  //        ease: "sine.inOut",
-  //        });
+    });
+    
+  }
+   
+ tl.to(
+      phones.querySelectorAll(".img"),
+      {
+        autoAlpha: 1,
+        scale: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+      0
+    );
+    tl.to(
+      text.children,
+      {
+        autoAlpha: 1,
+        stagger: 0.15,
+        ease: "none",
+      },
+      0.2
+    );
 
+    
+    gsap.to(".DownloadAppSection .img", {
+      yPercent: "+=3",
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+  }, sectionRef);
+
+  return () => ctx.revert();
 }, []);
 
   return (
@@ -92,7 +105,7 @@ useEffect(() => {
           </div>
 
           {/* Second phone */}
-          <div className="img relative rotate-[11.8deg] -ml-17 lg:-ml-18 translate-y-12">
+          <div className="img secondPhone relative rotate-[11.8deg] -ml-17 lg:-ml-18 translate-y-12">
             <Image
               src="/images/download2.webp" 
               alt="App Screen"

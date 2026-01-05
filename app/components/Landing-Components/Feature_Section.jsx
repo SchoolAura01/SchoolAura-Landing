@@ -27,60 +27,64 @@ const Feature_Section = () => {
       desc: "A unified space for real-time updates, discussions, and learning communication.",
     },
   ];
+ 
   useEffect(() => {
-    if (!sectionRef.current) return;
+  if (!sectionRef.current || !imageRef.current || !cardsRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "center 100%",
-          toggleActions: "play none none reverse",
-          invalidateOnRefresh: true,
-          // markers: true,
-        },
-      });
+  const ctx = gsap.context(() => {
 
+    gsap.set(imageRef.current, {
+      autoAlpha: 0,
+      y: 40,
+      scale: 0.95,
+    });
+
+    gsap.set(cardsRef.current, {
+      autoAlpha: 0,
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "center 100%",
+        toggleActions: "play none none reverse",
+        invalidateOnRefresh: true,
+        // markers: true,
+      },
+    });
+    tl.to(imageRef.current, {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.9,
+      ease: "power3.out",
+    });
+
+    const directions = [
+      { y: -40 }, // top
+      { x: 40 },  // right
+      { y: 40 },  // bottom
+      { x: -40 }, // left
+    ];
+    cardsRef.current.forEach((card, i) => {
       tl.fromTo(
-        imageRef.current,
-        { opacity: 0, y: 40, scale: 0.95 },
+        card,
+        { ...directions[i] },
         {
-          opacity: 1,
+          x: 0,
           y: 0,
-          scale: 1,
+          autoAlpha: 1,
           duration: 0.9,
           ease: "power3.out",
-          
-         
-        }
+        },
+        "-=0.4"
       );
+    });
 
-      const directions = [
-        { y: -40 }, // top
-        { x: 40 }, // right
-        { y: 40 }, // bottom
-        { x: -40 }, // left
-      ];
+  }, sectionRef);
 
-      cardsRef.current.forEach((card, i) => {
-        tl.fromTo(
-          card,
-          { ...directions[i], opacity: 0 },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            
-          },
-          "-=0.4"
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, []);
 
   return (
     <section ref={sectionRef} className=" ">

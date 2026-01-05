@@ -8,11 +8,14 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function SmoothScroll({ children }) {
+   
   useEffect(() => {
-    const smoother = ScrollSmoother.create({
+    let smoother;
+   window.scrollTo(0, 0);
+     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.2,
+      smooth: 1.5,
       smoothTouch: 0.05, 
       effects: true,
     });

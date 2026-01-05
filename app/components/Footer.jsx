@@ -1,8 +1,28 @@
 import React from 'react'
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import Link from 'next/link';
 const Footer = () => {
-  const icons=["ic:baseline-facebook","bxl:instagram-alt","mdi:youtube","mdi:twitter"];
+  
+  const socialLinks = [
+  {
+    icon: "ic:baseline-facebook",
+    link: "https://www.facebook.com/schoolaura/",
+  },
+  {
+    icon: "bxl:instagram-alt",
+    link: "https://www.instagram.com/schoolaura/",
+  },
+  {
+    icon: "mdi:youtube",
+    link: "https://www.youtube.com/@erp.schoolaura",
+  },
+  {
+    icon: "mdi:twitter", 
+    link: "https://twitter.com/school_aura",
+  },
+];
+
   return (
     <footer data-scroll-section className=''>
          <div className="mx-auto sm:mt-40">
@@ -12,7 +32,7 @@ const Footer = () => {
 
           {/* Top Row */}
           <div className="flex justify-between items-start mb-4">
-            <div>
+            <div className='pl-3'>
               <h3 className="font-bold text-4xl">Schoolaura</h3>
               <p className="text-sm text-gray-900">
                 The modern ERP for high-velocity teams
@@ -35,29 +55,31 @@ const Footer = () => {
               {/* Contact */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-white">
                 <div className="flex items-center gap-2">
-                  <span className="border border-white rounded-lg p-0.5 text-xs">
+                  <Link href="mailto:support@schoolaura.com" className="border border-white rounded-lg p-0.5 text-xs">
                     <Icon icon="material-symbols-light:mail-outline" width="21" height="21" />
-                  </span>
+                  </Link>
                   support.schoolaura.com
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="border border-white rounded-lg p-0.5 text-xs">
+                  <Link  href="tel:+919220611307" className="border border-white rounded-lg p-0.5 text-xs">
                     <Icon icon="solar:phone-outline" width="21" height="21" />
-                  </span>
-                  9220 611 307
+                  </Link>
+                  9220 611 307, 9220 611 306
                 </div>
               </div>
 
               {/* Social Icons */}
               <div className="flex items-center gap-3">
-                {icons.map((icon, i) => (
-                  <span
+                {socialLinks.map((social, i) => (
+                  <Link
+                  href={social.link}
+                  target='_blank'
                     key={i}
                     className=" flex items-center justify-center border border-white rounded-lg text-xs cursor-pointer hover:bg-white hover:text-black transition"
                   >
-                    <Icon icon={icon} width="28" height="28" />
-                  </span>
+                    <Icon icon={social.icon} width="28" height="28" />
+                  </Link>
                 ))}
               </div>
 
