@@ -129,8 +129,8 @@ if (isDesktop) {
           {/* Store Buttons */}
           <div className="flex gap-4">
             {/* App Store */}
-           <AppButton src={"/images/apple.svg"} app={"App Store"} small={"Download on the"}/>
-<AppButton src={"/images/playstore.png"} app={" Google Play"} small={"Get it on"}/>
+           <AppButton src={"/images/apple.svg"} app={"App Store"} small={"Download on the"} link={"https://play.google.com/store/apps/details?id=com.st_schoolaura&hl=en_IN"}/>
+<AppButton src={"/images/playstore.png"} app={" Google Play"} small={"Get it on"} link={"https://play.google.com/store/apps/details?id=com.st_schoolaura&hl=en_IN"}/>
           </div>
         </div>
 
