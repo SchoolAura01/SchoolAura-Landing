@@ -2,8 +2,12 @@ import React from 'react'
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from 'next/link';
+import moment from "moment";
+
+
+
 const Footer = () => {
-  
+  const currentYear = moment().year();
   const socialLinks = [
   {
     icon: "ic:baseline-facebook",
@@ -98,7 +102,7 @@ const Footer = () => {
             />
    
       <p className="text-center text-base sm:text-xl text-black/90 font-medium my-3 sm:my-5">
-        © 2025 Schoolaura. All rights reserved.
+        © {currentYear} Schoolaura. All rights reserved.
       </p>
     </div>
     </footer>
