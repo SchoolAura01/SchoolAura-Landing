@@ -1,13 +1,15 @@
 "use client";
 import React,{ useEffect, useRef } from "react";
 import Image from "next/image";
-import AppButton from "./sub_Components/AppButton";
-
+import AppButton from ".//AppButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
 gsap.registerPlugin(ScrollTrigger);
-const DownloadAppSection = () => {
+const Mobile_App = ({app}) => {
+    const { gradientFrom, gradientTo, textColor, reverse, image1, image2, appStore, playStore } = app;
+    console.log(app);
   const sectionRef = useRef(null);
 const phonesRef = useRef(null);
 const textRef = useRef(null);
@@ -91,13 +93,16 @@ if (isDesktop) {
   return (
     <section ref={sectionRef}  className="DownloadAppSection w-full mb-10 bg-white py-0  mt-80 sm:mt-80 md:mt-70 lg:mt-20 mb-20">
         <div className="container mx-auto px-5 sm:px-2 md:px-0 md:w-[80%]">
-      <div className="downloadApp relative w-full  rounded-3xl bg-linear-to-r from-[#000DFF] to-[#11005E] flex flex-col lg:flex-row items-center">
+      <div className={`downloadApp relative w-full  rounded-3xl flex flex-col lg:flex-row items-center`}
+       style={{
+    background: `linear-gradient(to right, ${gradientFrom}, ${gradientTo})`,
+  }}>
 
         {/* LEFT – Mobile Images */}
-        <div ref={phonesRef} className="left absolute lg:relative w-full lg:w-1/2 flex justify-center items-center py-12 -translate-y-80 lg:-translate-y-10">
-          <div className="img relative -rotate-[8deg] z-10 ">
+        <div ref={phonesRef} className={`left absolute lg:relative w-full lg:w-1/2 flex justify-center items-center py-12 -translate-y-80 lg:-translate-y-10  ${reverse ? "lg:order-2" : "lg:order-1"}`}>
+          <div className="img relative -rotate-[11deg] lg:-rotate-[8deg] z-10 ">
             <Image
-              src="/images/download1.webp" 
+              src={image1} 
               alt="App Screen"
               fill
               className="object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.25)]"
@@ -105,9 +110,9 @@ if (isDesktop) {
           </div>
 
           {/* Second phone */}
-          <div className="img secondPhone relative rotate-[11.8deg] -ml-17 lg:-ml-18 translate-y-12">
+          <div className="img secondPhone relative rotate-[8.8deg] lg:rotate-[11.8deg] -ml-17 lg:-ml-18 translate-y-12">
             <Image
-              src="/images/download2.webp" 
+              src={image2} 
               alt="App Screen"
               fill
               className="object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.25)]"
@@ -116,12 +121,12 @@ if (isDesktop) {
         </div>
 
         {/* RIGHT – Content */}
-        <div ref={textRef}  className="right lg:w-1/2 text-white p-5 sm:p-10 mt-auto lg:mt-0">
+        <div ref={textRef}  className={`right lg:w-1/2 ${textColor} p-5 sm:p-10 mt-auto lg:mt-0 ${reverse ? "lg:order-1" : "lg:order-2"}`}>
           <h2 className="text-4xl lg:text-3xl font-semibold mb-4">
             Download Our <br /> App Now
           </h2>
 
-          <p className="text-sm text-white/90 max-w-md mb-8">
+          <p className={`text-sm ${textColor}/90 max-w-md mb-8`}>
             Please feel free to download our app on the app store or
             google play store to evaluate our product.
           </p>
@@ -129,8 +134,8 @@ if (isDesktop) {
           {/* Store Buttons */}
           <div className="flex gap-4">
             {/* App Store */}
-           <AppButton src={"/images/apple.svg"} app={"App Store"} small={"Download on the"} link={"https://play.google.com/store/apps/details?id=com.st_schoolaura&hl=en_IN"}/>
-<AppButton src={"/images/playstore.png"} app={" Google Play"} small={"Get it on"} link={"https://play.google.com/store/apps/details?id=com.st_schoolaura&hl=en_IN"}/>
+           <AppButton src={"/images/apple.svg"} app={"App Store"} small={"Download on the"} link={appStore}/>
+<AppButton src={"/images/playstore.png"} app={" Google Play"} small={"Get it on"} link={playStore}/>
           </div>
         </div>
 
@@ -140,4 +145,4 @@ if (isDesktop) {
   );
 };
 
-export default DownloadAppSection;
+export default Mobile_App;

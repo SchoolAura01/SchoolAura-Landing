@@ -10,7 +10,9 @@ import WhyChooseUs from "../components/Landing-Components/WhyChooseUs";
 import VedioSection from "../components/Landing-Components/VedioSection";
 import Get_In_Touch from "../components/Landing-Components/Get_In_Touch";
 import Footer from "../components/Footer";
-import DownloadAppSection from "../components/Landing-Components/DownloadAppSection";
+import Download_StudentApp from "../components/Landing-Components/Download_StudentApp";
+import Download_App from "../components/Landing-Components/Download_App";
+import ERP_Schoolaura from "../components/Landing-Components/ERP_Schoolaura";
 
 export default function LandingPage() {
   return (
@@ -23,12 +25,13 @@ export default function LandingPage() {
           <SchoolsList />
           <Dashboard_Section />
           <Feature_Section/>
+          <ERP_Schoolaura/>
           <Testimonial />
           <SchoolAura_section/>
           <WhyChooseUs />
           <VedioSection />
           <Get_In_Touch />
-          <DownloadAppSection />
+          <Download_App/>
           <Footer />
         </div>
       </main>
